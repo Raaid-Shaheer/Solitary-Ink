@@ -20,6 +20,7 @@ const Modal = (() => {
             <input type="file" accept="image/*" id="${id}" class="hidden"/>
           </label>
           <img id="${id}-preview" src="${f.value || ''}" class="w-12 h-12 rounded-lg object-cover ${f.value ? '' : 'hidden'}" alt=""/>
+          <span id="${id}-size" class="font-label-sm text-label-sm text-on-surface-variant/60"></span>
           ${f.value ? `<button type="button" id="${id}-clear" class="text-on-surface-variant hover:text-error text-xs underline">Remove</button>` : ''}
         </div>
       </div>`;
@@ -54,9 +55,16 @@ const Modal = (() => {
         if (f.value) fileData[f.key] = f.value;
         const input = overlay.querySelector(`#${id}`);
         const preview = overlay.querySelector(`#${id}-preview`);
+        const sizeLabel = overlay.querySelector(`#${id}-size`);
         input.addEventListener('change', () => {
           const file = input.files[0];
           if (!file) return;
+          const mb = file.size / (1024 * 1024);
+          if (sizeLabel) {
+            sizeLabel.textContent = `${mb.toFixed(1)} MB`;
+            sizeLabel.classList.toggle('text-error', mb > 8);
+            sizeLabel.classList.toggle('text-on-surface-variant/60', mb <= 8);
+          }
           const reader = new FileReader();
           reader.onload = () => {
             fileData[f.key] = reader.result;
