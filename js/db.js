@@ -4,7 +4,7 @@
 // version bump mid-project.
 
 const DB_NAME = 'solitude-ink';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 const STORES = {
   journalEntries: 'date',      // keyPath: 'date' (YYYY-MM-DD), one entry per day
@@ -12,6 +12,7 @@ const STORES = {
   traits: 'id',                // {id, kind: 'strength'|'weakness', title, note, createdAt}
   listItems: 'id',             // {id, list, type: 'text'|'image'|'link', ...}
   zikrs: 'id',                 // {id, arabic, english, target, count, image}
+  exercises: 'id',             // {id, name, gif, target, count, history}
   activityOptions: 'id',       // {id, label} — the hour-breakdown dropdown options
   meta: 'key'                  // small key/value store, e.g. journal streak cache
 };
