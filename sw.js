@@ -2,7 +2,7 @@
 // the first successful load. Cache-first for everything except HTML, which
 // is network-first-with-cache-fallback so app updates are picked up.
 
-const CACHE_NAME = 'solitude-ink-v8';
+const CACHE_NAME = 'solitude-ink-v9';
 
 const APP_SHELL = [
   './',
@@ -19,6 +19,7 @@ const APP_SHELL = [
   './js/traits.js',
   './js/lists.js',
   './js/zikr.js',
+  './js/exercises.js',
   './js/app.js',
   './icons/icon-192.png',
   './icons/icon-512.png'
