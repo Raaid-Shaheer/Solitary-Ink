@@ -41,6 +41,13 @@ const Home = (() => {
     return `${active} target${active === 1 ? '' : 's'} active`;
   }
 
+  async function exercisesStat() {
+    const all = await DB.getAll('exercises');
+    if (!all.length) return 'None yet';
+    const active = all.filter(ex => ex.target && ex.count < ex.target).length;
+    return `${active} target${active === 1 ? '' : 's'} active`;
+  }
+
   function tile({ route, icon, title, stat, spanFull }) {
     return `
       <button data-route="${route}" class="home-tile group bg-surface-container p-6 rounded-xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors active:scale-[0.98] flex flex-col justify-between h-40 text-left ${spanFull ? 'md:col-span-2' : ''}">
@@ -56,8 +63,8 @@ const Home = (() => {
   }
 
   async function render() {
-    const [jStat, hStat, tStat, lStat, zStat] = await Promise.all([
-      journalStat(), habitsStat(), traitsStat(), listsStat(), zikrStat()
+    const [jStat, hStat, tStat, lStat, zStat, exStat] = await Promise.all([
+      journalStat(), habitsStat(), traitsStat(), listsStat(), zikrStat(), exercisesStat()
     ]);
     const now = new Date();
     const hour = now.getHours();
@@ -75,7 +82,8 @@ const Home = (() => {
         ${tile({ route: 'traits', icon: 'cognition', title: 'Traits', stat: tStat })}
         ${tile({ route: 'lists', icon: 'format_list_bulleted', title: 'Lists', stat: lStat })}
         ${tile({ route: 'habits', icon: 'check_circle', title: 'Habits', stat: hStat })}
-        ${tile({ route: 'zikr', icon: 'settings_heart', title: 'Zikr', stat: zStat, spanFull: true })}
+        ${tile({ route: 'zikr', icon: 'settings_heart', title: 'Zikr', stat: zStat })}
+        ${tile({ route: 'exercises', icon: 'fitness_center', title: 'Exercises', stat: exStat })}
       </section>
     `;
 
