@@ -6,7 +6,8 @@ const ROUTES = {
   habits: () => Habits.render(),
   traits: () => Traits.render(),
   lists: () => Lists.render(),
-  zikr: () => Zikr.render()
+  zikr: () => Zikr.render(),
+  exercises: () => Exercises.render()
 };
 
 function setActiveNav(route) {
