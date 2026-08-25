@@ -36,7 +36,7 @@ const Zikr = (() => {
           <div class="flex items-center gap-4 relative z-10 min-w-0">
             ${z.image ? `<img src="${z.image}" class="w-14 h-14 rounded-lg object-cover shrink-0" alt=""/>` : ''}
             <div class="flex flex-col gap-2 min-w-0">
-              ${z.arabic ? `<span class="font-display-date text-display-date text-primary leading-tight truncate" dir="rtl" style="font-family:'Amiri', serif;">${z.arabic}</span>` : ''}
+              ${z.arabic ? `<span class="font-display-date text-display-date text-primary leading-tight truncate font-indopak" dir="rtl">${z.arabic}</span>` : ''}
               <div class="min-w-0">
                 <span class="font-body-lg text-body-lg text-on-surface block truncate">${z.transliteration || ''}</span>
                 <span class="font-body-md text-body-md text-on-surface-variant block truncate">${z.english || ''}</span>
@@ -191,7 +191,7 @@ const Zikr = (() => {
       <div class="flex-1 flex flex-col items-center justify-center px-container-padding max-w-max-width-content mx-auto w-full">
         <div class="text-center mb-12 flex flex-col items-center gap-4">
           ${z.image ? `<img src="${z.image}" class="w-40 h-40 rounded-2xl object-cover mb-2" alt=""/>` : ''}
-          ${z.arabic ? `<span class="text-[56px] leading-tight text-primary" dir="rtl" style="font-family:'Amiri', serif;">${z.arabic}</span>` : ''}
+          ${z.arabic ? `<span class="text-[56px] leading-tight text-primary font-indopak" dir="rtl">${z.arabic}</span>` : ''}
           <div class="flex flex-col items-center">
             <span class="font-headline-md text-headline-md text-on-surface">${z.transliteration || ''}</span>
             <span class="font-body-md text-body-md text-on-surface-variant mt-1">${z.english || ''}</span>
