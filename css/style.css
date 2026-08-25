@@ -5,6 +5,17 @@
     font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
+/* Indo-Pak Quran script (Nastaleeq-Naskh, Hanafi waqf marks) — used for
+   zikr Arabic text. Falls back to Amiri if this CDN font fails to load. */
+@font-face {
+    font-family: 'IndoPakNastaleeq';
+    src: url('https://static-cdn.tarteel.ai/qul/fonts/nastaleeq/Hanafi/normal-v4.2.2/with-waqf-lazmi/font.ttf') format('truetype');
+    font-display: swap;
+}
+.font-indopak {
+    font-family: 'IndoPakNastaleeq', 'Amiri', serif;
+}
+
 /* Custom Pulse Animation (tap feedback on counters) */
 @keyframes subtle-pulse {
     0% { transform: scale(1); opacity: 1; }
