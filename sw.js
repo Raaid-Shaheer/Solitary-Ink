@@ -2,7 +2,7 @@
 // the first successful load. Cache-first for everything except HTML, which
 // is network-first-with-cache-fallback so app updates are picked up.
 
-const CACHE_NAME = 'solitude-ink-v9';
+const CACHE_NAME = 'solitude-ink-v10';
 
 const APP_SHELL = [
   './',
@@ -67,7 +67,7 @@ self.addEventListener('fetch', (event) => {
       if (cached) return cached;
       return fetch(req)
         .then((res) => {
-          if (res && res.status === 200) {
+          if (res && (res.status === 200 || res.type === 'opaque')) {
             const clone = res.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
           }
